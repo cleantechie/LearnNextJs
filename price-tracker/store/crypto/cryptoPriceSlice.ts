@@ -18,23 +18,23 @@ const initialState: PriceState = {
   historicalPriceData: []
 }
 
-const priceSlice = createSlice({
-  name: 'price',
+const cryptoPriceSlice = createSlice({
+  name: 'cryptoPrice',
   initialState,
   reducers: {
     setSelectedCoin: (state, action: PayloadAction<string>) => {
-      state.selectedCoin = action.payload;
+      state.selectedCoin = action.payload
     },
     updateCurrentPriceData: (state, action: PayloadAction<PriceData[]>) => {
-      state.currentPriceData = action.payload;
+      state.currentPriceData = action.payload
       console.log("::::::::::::::currentPriceData", state.currentPriceData)
     },
     updateHistoricalPriceData: (state, action: PayloadAction<PriceData[]>) => {
-      state.historicalPriceData = action.payload;
+      state.historicalPriceData = action.payload
       console.log("::::::::::::::historicalPriceData", state.historicalPriceData)
     },
   },
 });
 
-export const { setSelectedCoin, updateCurrentPriceData, updateHistoricalPriceData } = priceSlice.actions;
-export default priceSlice.reducer;
+export const { setSelectedCoin, updateCurrentPriceData, updateHistoricalPriceData } = cryptoPriceSlice.actions;
+export default cryptoPriceSlice.reducer;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const COINGECKO_API = 'https://api.coingecko.com/api/v3/simple/price';
+const COINGECKO_API = process.env.COINGECKO_API as string || 'https://api.coingecko.com/api/v3/simple/price/';
 
 export interface CryptoPrice {
   coin: string;

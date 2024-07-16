@@ -1,16 +1,16 @@
-// components/PriceTable.tsx
+// components/StockTable.tsx
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store';
+import { RootState } from '../../store/store';
 
-const PriceTable: React.FC = () => {
-  const { selectedCoin, currentPriceData, historicalPriceData } = useSelector((state: RootState) => state.price);
+const StockTable: React.FC = () => {
+  const { selectedStock, currentStockData, historicalcurrentStockData } = useSelector((state: RootState) => state.stockPrice);
 
-  const currentPrice = currentPriceData.find(data => data.coin === selectedCoin);
+  const currentStock = currentStockData.find(data => data.stock === selectedStock);
   
   const combinedData = [
-    ...(currentPrice ? [currentPrice] : []),
-    ...historicalPriceData
+    ...(currentStock ? [currentStock] : []),
+    ...historicalcurrentStockData
   ].slice(0, 20);
 
   return (
@@ -43,4 +43,4 @@ const PriceTable: React.FC = () => {
   );
 };
 
-export default PriceTable;
+export default StockTable;

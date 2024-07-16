@@ -1,18 +1,18 @@
-// components/CoinSelector.tsx
+// components/StockSelector.tsx
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedCoin } from '../store/priceSlice';
-import { RootState } from '../store';
+import { setSelectedStock } from '../../store/stocks/stockPriceSlice';
+import { RootState } from '../../store/store';
 
-const COINS = ['bitcoin', 'ethereum', 'dogecoin', 'ripple', 'cardano'];
+const STOCKS = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'META'];
 
-const CoinSelector: React.FC = () => {
+const StockSelector: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
-  const selectedCoin = useSelector((state: RootState) => state.price.selectedCoin);
+  const selectedStock = useSelector((state: RootState) => state.stockPrice.selectedStock);
 
-  const handleCoinChange = (coin: string) => {
-    dispatch(setSelectedCoin(coin));
+  const handleStockChange = (stock: string) => {
+    dispatch(setSelectedStock(stock));
     setIsOpen(false);
   };
 
@@ -22,23 +22,23 @@ const CoinSelector: React.FC = () => {
         onClick={() => setIsOpen(true)}
         className="mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
-        Change Coin
+        Change Stock
       </button>
       {isOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
           <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
             <div className="mt-3 text-center">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">Select a Coin</h3>
+              <h3 className="text-lg leading-6 font-medium text-gray-900">Select a Stock</h3>
               <div className="mt-2 px-7 py-3">
-                {COINS.map((coin) => (
+                {STOCKS.map((stock) => (
                   <button
-                    key={coin}
-                    onClick={() => handleCoinChange(coin)}
+                    key={stock}
+                    onClick={() => handleStockChange(stock)}
                     className={`mb-2 w-full py-2 px-4 border rounded ${
-                      selectedCoin === coin ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
+                      selectedStock === stock ? 'bg-blue-500 text-white' : 'bg-white text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    {coin.charAt(0).toUpperCase() + coin.slice(1)}
+                    {stock}
                   </button>
                 ))}
               </div>
@@ -59,4 +59,4 @@ const CoinSelector: React.FC = () => {
   );
 };
 
-export default CoinSelector;
+export default StockSelector;
