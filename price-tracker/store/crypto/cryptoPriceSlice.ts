@@ -27,11 +27,9 @@ const cryptoPriceSlice = createSlice({
     },
     updateCurrentPriceData: (state, action: PayloadAction<PriceData[]>) => {
       state.currentPriceData = action.payload
-      console.log("::::::::::::::currentPriceData", state.currentPriceData)
     },
     updateHistoricalPriceData: (state, action: PayloadAction<PriceData[]>) => {
       state.historicalPriceData = action.payload
-      console.log("::::::::::::::historicalPriceData", state.historicalPriceData)
     },
   },
 });

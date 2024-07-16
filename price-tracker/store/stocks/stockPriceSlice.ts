@@ -27,11 +27,9 @@ const stockPriceSlice = createSlice({
       },
       updateCurrentStockData: (state, action: PayloadAction<StockData[]>) => {
         state.currentStockData = action.payload
-        console.log(":::::::::::updateCurrentStockData", state.currentStockData)
       },
       updateHistoricalcurrentStockData: (state, action: PayloadAction<StockData[]>) => {
         state.historicalcurrentStockData = action.payload
-        console.log(":::::::::::updateHistoricalcurrentStockData", state.historicalcurrentStockData)
       }
     }
 })

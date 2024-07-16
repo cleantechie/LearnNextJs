@@ -1,0 +1,26 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/price_tracker
+      - MONGODB_DB=price_tracker
+      - COINGECKO_API=https://api.coingecko.com/api/v3/simple/price
+      - YAHOO_FINANCE_API=https://query1.finance.yahoo.com/v8/finance/chart/
+      - CORS_PROXY=https://cors-anywhere.herokuapp.com/
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
