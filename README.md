@@ -6,7 +6,7 @@
 
 Recommended Approach:
 
-## 1 Lets Dock It (Using Docker)
+## 1. Lets Dock It (Using Docker)
 
 Install Docker (Guide Attached below)
 
